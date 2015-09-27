@@ -4,9 +4,9 @@ angular
 	.module('controlTimeModule')
 	.controller('allUsersTimeCtrl', allUsersTimeCtrl);
 
-allUsersTimeCtrl.$inject = ['resourceFactory', '$log'];
+allUsersTimeCtrl.$inject = ['resourceFactory', '$log', '$modal'];
 
-function allUsersTimeCtrl(resourceFactory, $log) {
+function allUsersTimeCtrl(resourceFactory, $log, $modal) {
 
 	var vm = this;
 	vm.allUsers = [];
@@ -18,18 +18,14 @@ function allUsersTimeCtrl(resourceFactory, $log) {
 
 ////////////////////////////////BUTTON////////////////////////////////
   vm.items = [
-    'The first choice!',
-    'And another choice for you.',
-    'but wait! A third!'
+    {title :'edit date'},
+    {title:'delete date'}
   ];
 
   vm.status = {
     isopen: false
   };
 
-  vm.toggled = function(open) {
-    $log.log('Dropdown is now: ', open);
-  };
 
   vm.toggleDropdown = function($event) {
     $event.preventDefault();
@@ -38,4 +34,14 @@ function allUsersTimeCtrl(resourceFactory, $log) {
   };
 ////////////////////////////////BUTTON////////////////////////////////
 
+////////////////////////////////Modal////////////////////////////////
+  vm.open = function () {
+    var modalInstance = $modal.open({
+      templateUrl: './templates/date/modalDate.html',
+      controller: 'dateCtrl'
+    });
+  };
+
+
+////////////////////////////////Modal////////////////////////////////
 }

@@ -15,10 +15,10 @@ article(ng-controller = 'allUsersTimeCtrl as user')
 				td
 					span(dropdown='', on-toggle='user.toggled(open)')
 						a#simple-dropdown(href='', dropdown-toggle='')
-						| Click me for a dropdown, yo!
+							| Options
 						ul.dropdown-menu(aria-labelledby='simple-dropdown')
-						li(ng-repeat='choice in user.items')
-							a(href='') {{choice}}
+							li(ng-repeat='choice in user.items')
+								a(href='' ng-click="user.open()") {{choice.title}}
 
 					//- .dropdown
 					//- 	button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
