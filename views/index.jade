@@ -1,0 +1,13 @@
+doctype html
+html(ng-app = "controlTimeModule")
+	head
+		meta(charset='UTF-8')
+		title controlTime
+		link(rel='stylesheet', href='styles/css/style.css')
+		link(rel='stylesheet', href='styles/css/libs.css')
+	body
+		header
+		main(ng-controller = mainCtrl)
+			article(ng-view)
+		script(src='javascripts/libs.js')
+		script(src='javascripts/main.js')

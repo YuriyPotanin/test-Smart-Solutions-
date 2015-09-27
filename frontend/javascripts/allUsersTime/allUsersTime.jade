@@ -1,0 +1,33 @@
+article(ng-controller = 'allUsersTimeCtrl as user')
+	table.table
+		thead
+			tr
+				td User name
+				td date
+				td start time
+				td end time
+		tbody
+			tr(ng-repeat = 'day in user.allUsers')
+				td {{day.userID.fName}} {{day.userID.lName}} 
+				td {{day.date |  date: "dd/MM/yyyy"}}
+				td {{day.tStart | date: "HH:mm:ss"}}
+				td {{day.tEnd | date: "HH:mm:ss"}}
+				td
+					span(dropdown='', on-toggle='user.toggled(open)')
+						a#simple-dropdown(href='', dropdown-toggle='')
+						| Click me for a dropdown, yo!
+						ul.dropdown-menu(aria-labelledby='simple-dropdown')
+						li(ng-repeat='choice in user.items')
+							a(href='') {{choice}}
+
+					//- .dropdown
+					//- 	button.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+					//- 		| Options
+					//- 		span.caret
+					//- 	ul.dropdown-menu
+					//- 		li
+					//- 			a(href='#') change time
+					//- 		li
+					//- 			a(href='#') edit user
+					//- 		li
+					//- 			a(href='#') JavaScript
