@@ -79,14 +79,14 @@ module.exports = function(grunt) {
 					dest: 'public/images'
 				}]
 			},
-			// js: {
-			// 	files: [{
-			// 		expand: true,
-			// 		cwd: 'frontend/javascripts/',
-			// 		src: ['**'],
-			// 		dest: 'public/javascripts/'
-			// 	}]
-			// }
+			fonts: {
+				files: [{
+					expand: true,
+					cwd: 'bower_components/bootstrap/fonts',
+					src: ['**'],
+					dest: 'public/styles/fonts'
+				}]
+			}
 		},
 
 		clean: {
@@ -118,6 +118,7 @@ module.exports = function(grunt) {
 					'bower_components/angular-route/angular-route.js',
 					'bower_components/angular-resource/angular-resource.js',
 					'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+					'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
 					'bower_components/jquery/dist/jquery.min.js',
 					'bower_components/bootstrap/dist/js/bootstrap.min.js'
 					
