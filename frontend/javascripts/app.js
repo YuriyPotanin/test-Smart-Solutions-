@@ -9,9 +9,9 @@ angular
 			templateUrl: './templates/allUsersTime/allUsersTime.html',
 			controller: 'allUsersTimeCtrl'
 		}).
-		when('/task/:taskId', {
-			templateUrl: './task/taskDetail.html',
-			controller: 'taskDetailCtrl'
+		when('/api/users/:userID', {
+			templateUrl: './templates/users/user.html',
+			controller: 'userCtrl as user'
 		}).
 		otherwise({
 			redirectTo: '/'

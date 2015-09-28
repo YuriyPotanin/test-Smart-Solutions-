@@ -4,9 +4,9 @@ angular
   .module('controlTimeModule')
   .controller('allUsersTimeCtrl', allUsersTimeCtrl);
 
-allUsersTimeCtrl.$inject = ['resourceFactory', '$log', '$modal', '$scope'];
+allUsersTimeCtrl.$inject = ['resourceFactory', '$log', '$modal'];
 
-function allUsersTimeCtrl(resourceFactory, $log, $modal, $scope) {
+function allUsersTimeCtrl(resourceFactory, $log, $modal) {
 
   var vm = this;
   vm.allUsers = [];
@@ -19,9 +19,11 @@ function allUsersTimeCtrl(resourceFactory, $log, $modal, $scope) {
 
   ////////////////////////////////BUTTON////////////////////////////////
   vm.items = [{
-    title: 'edit date'
+    title: 'edit date',
+    templateUrl: 'modalDate.html'
   }, {
-    title: 'delete date'
+    title: 'delete date',
+    templateUrl: 'modalDeleteDate.html'
   }];
 
   vm.status = {
@@ -38,49 +40,39 @@ function allUsersTimeCtrl(resourceFactory, $log, $modal, $scope) {
 
   ////////////////////////////////Modal////////////////////////////////
 
-  vm.open = function(item) {
+  vm.open = function(item, template) {
     var modalInstance = $modal.open({
-      templateUrl: './templates/modalTemplates/modalDate.html',
+      templateUrl: './templates/modalTemplates/'+ template,
       controller: 'allUsersTimeCtrl as modal'
 
     });
     vm.editObject = item;
-    $scope.$apply();
-    console.log(vm.editObject._id);
+    
+    console.log(vm.editObject.tStart);
   };
 
 
   ////////////////////////////////Modal////////////////////////////////
 
   ////////////////////////////////TimePicer////////////////////////////
-  vm.mytime = new Date();
-
+  // vm.stime = vm.editObject.tStart;
+  // vm.etime = vm.editObject.tEnd;
   vm.hstep = 1;
   vm.mstep = 1;
 
-  // vm.options = {
-  //   hstep: [1, 2, 3],
-  //   mstep: [1, 5, 10, 15, 25, 30]
-  // };
-
   vm.ismeridian = false;
-  // vm.toggleMode = function() {
-    // vm.ismeridian = ! vm.ismeridian;
-  // };
 
   vm.update = function() {
-    var d = new Date();
-    d.setHours( 8);
-    d.setMinutes( 0 );
-    vm.mytime = d;
+    var s = vm.editObject.tStart;
+    s.setHours( 8);
+    s.setMinutes( 0 );
+    vm.stime = s;
+
+    var e = vm.editObject.tEnd;
+    e.setHours( 8);
+    e.setMinutes( 0 );
+    vm.etime = e;
   };
 
-  // vm.changed = function () {
-    // $log.log('Time changed to: ' + vm.mytime);
-  // };
-
-  // vm.clear = function() {
-    // vm.mytime = null;
-  // };
 
   }

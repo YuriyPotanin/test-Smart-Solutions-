@@ -6,10 +6,10 @@ angular
 
 resourceFactory.$inject = ['$resource'];
 
- function resourceFactory ($resource) {
+function resourceFactory($resource) {
 
 	var allUsers = $resource('/api/workingDay');
-
+	var userBasePath = '/api/users/';
 	var requstMethog = {};
 
 	requstMethog.getAllUsers = function(callback) {
@@ -18,5 +18,11 @@ resourceFactory.$inject = ['$resource'];
 		});
 	};
 
+	requstMethog.getUser = function(userId,callback) {
+		var user = $resource(userBasePath + userId);
+		user.get(function(resultate) {
+			callback(resultate);
+		});
+	};
 	return requstMethog;
 }

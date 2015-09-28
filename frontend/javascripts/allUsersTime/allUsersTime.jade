@@ -1,4 +1,4 @@
-article(ng-controller = 'allUsersTimeCtrl as date')
+article.col-sm-4.col-sm-offset-3(ng-controller = 'allUsersTimeCtrl as date')
 	table.table
 		thead
 			tr
@@ -8,7 +8,8 @@ article(ng-controller = 'allUsersTimeCtrl as date')
 				td end time
 		tbody
 			tr(ng-repeat = 'day in date.allUsers')
-				td {{day.userID.fName}} {{day.userID.lName}} 
+				td 
+					a(href = '#/api/users/{{day.userID._id}}'){{day.userID.fName}} {{day.userID.lName}} 
 				td {{day.date |  date: "dd/MM/yyyy"}}
 				td {{day.tStart | date: "HH:mm:ss"}}
 				td {{day.tEnd | date: "HH:mm:ss"}}
@@ -18,5 +19,5 @@ article(ng-controller = 'allUsersTimeCtrl as date')
 							| Options
 						ul.dropdown-menu(aria-labelledby='simple-dropdown')
 							li(ng-repeat='choice in date.items')
-								a(href='' ng-click="date.open(day)") {{choice.title}}
-
+								a(href='' ng-click="date.open(day, choice.templateUrl)") {{choice.title}}
+	pagination(direction-links='false', total-items='totalItems', ng-model='currentPage', num-pages='smallnumPages')

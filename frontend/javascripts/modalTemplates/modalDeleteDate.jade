@@ -1,11 +1,8 @@
 .modal-header(type="text/ng-template")
 	h3.modal-title {{modal.editObject._id}}
 .modal-body
-	.row
-		.col-sm-6 Edit Start Time
-			timepicker(ng-model='modal.stime', show-meridian='modal.ismeridian')
-		.col-sm-6 Edit End Time
-			timepicker(ng-model='modal.etime', show-meridian='modal.ismeridian')
+
+
 .modal-footer
 	button.btn.btn-primary(type='button', ng-click='ok()') OK
 	button.btn.btn-warning(type='button', ng-click='cancel()') Cancel
