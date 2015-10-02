@@ -1,4 +1,4 @@
-article.col-sm-4.col-sm-offset-3(ng-controller = 'allUsersTimeCtrl as date')
+article.col-sm-6.col-sm-offset-3(ng-controller = 'allUsersTimeCtrl as date')
 	table.table
 		thead
 			tr
@@ -11,13 +11,18 @@ article.col-sm-4.col-sm-offset-3(ng-controller = 'allUsersTimeCtrl as date')
 				td 
 					a(href = '#/api/users/{{day.userID._id}}'){{day.userID.fName}} {{day.userID.lName}} 
 				td {{day.date |  date: "dd/MM/yyyy"}}
-				td {{day.tStart | date: "HH:mm:ss"}}
-				td {{day.tEnd | date: "HH:mm:ss"}}
+				td {{day.tStart | date: "HH:mm"}}
+				td {{day.tEnd | date: "HH:mm"}}
 				td
 					span(dropdown='', on-toggle='date.toggled(open)')
 						a#simple-dropdown(href='', dropdown-toggle='')
 							| Options
 						ul.dropdown-menu(aria-labelledby='simple-dropdown')
-							li(ng-repeat='choice in date.items')
-								a(href='' ng-click="date.open(day, choice.templateUrl)") {{choice.title}}
-	pagination(direction-links='false', total-items='totalItems', ng-model='currentPage', num-pages='smallnumPages')
+							li(ng-repeat='choice in date.action')
+								a(href='' ng-click="date.open(day, choice, $parent.$index)") {{choice.title}}
+	.row
+		pagination(total-items="date.totalItems" ng-model="date.currentPage" ng-change="date.pageChanged(date.currentPage)" items-per-page ='date.itemsPerPage')
+	
+	button.btn.btn-primary(type='button', ng-click='date.openNew("modalUserCntrl", "modalUser.html")') Create new User 
+	button.btn.btn-primary(type='button', ng-click='date.openNew("modalDayCtrl", "modalDay.html")') Create new workday 
+

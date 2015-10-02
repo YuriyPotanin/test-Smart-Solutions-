@@ -1,0 +1,16 @@
+.modal-header
+	h3.modal-title {{time.selectObject.userID.fName}} {{time.selectObject.userID.lName}}
+.modal-body
+	.row
+		h4.col-sm-4.col-sm-offset-1
+			strong {{time.selectObject.date | date: "dd/MM/yyyy"}}
+	hr
+	.row
+		.col-sm-5.col-sm-offset-1 Edit Start Time
+			timepicker(ng-model='time.stime', show-meridian='time.ismeridian')
+		.col-sm-6 Edit End Time
+			timepicker(ng-model='time.etime', show-meridian='time.ismeridian')
+.modal-footer
+	button.btn.btn-primary(type='button', ng-click='time.saveObjectTime(time.selectObject._id, time.stime, time.etime)') OK
+	button.btn.btn-warning(type='button', ng-click='time.cancel()') Cancel
+

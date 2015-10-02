@@ -1,0 +1,31 @@
+.modal-header
+	h3.modal-title Create New Dey
+.modal-body
+	.row
+		.col-sm-6.col-cm-offset-1
+			label(for = 'date') Enter date:
+			p.input-group
+				input.form-control(type='date', datepicker-popup='', ng-model='new.date', is-open='status.opened', min-date='minDate', max-date='maxDate', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', ng-required='true', close-text='Close')
+		.col-sm-6
+			input.form-control(type='text',
+				ng-model='new.customSelected',
+				placeholder='add user',
+				typeahead='user as user.q for user in new.allUsers | filter:{name:$viewValue}',
+				typeahead-template-url='customTemplate.html')
+	hr
+	.row
+		.col-sm-3.col-sm-offset-1 Edit Start Time
+			timepicker(ng-model='new.stime', show-meridian='new.ismeridian')
+		.col-sm-3 Edit End Time
+			timepicker(ng-model='new.etime', show-meridian='new.ismeridian')
+		.col-sm-5 Added People:
+			ul
+				li(ng-repeat='user in new.addedPeople'){{new.user.fName}} {{new.user.lName}} 
+.modal-footer
+	button.btn.btn-primary(type='button', ng-click='time.saveObjectTime(time.selectObject._id, time.stime, time.etime)') OK
+	button.btn.btn-warning(type='button', ng-click='time.cancel()') Cancel
+
+script(type='text/ng-template', id='customTemplate.html').
+	<a>
+	<span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+	</a>

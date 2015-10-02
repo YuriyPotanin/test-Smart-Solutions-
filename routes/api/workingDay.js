@@ -12,14 +12,14 @@ module.exports = function(app) {
     });
 
     app.get('/api/workingDay', function(req, res) {
-        workingDayRepository.getAll(function(err, data) {
+        workingDayRepository.getAll(req.query.page, function(err, data) {
             res.err = err;
             res.send(data);
         });
     });
 
     app.put('/api/workingDay/:dayId', function(req, res) {
-        workingDayRepository.update(req.params.dayId, function(err, data) {
+        workingDayRepository.update(req.params.dayId, req.body, function(err, data) {
             res.err = err;
             res.send(data);
         });

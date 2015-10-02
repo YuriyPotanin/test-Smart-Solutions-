@@ -1,0 +1,12 @@
+.modal-header(type="text/ng-template")
+	h3.modal-title 
+		strong {{delete.day.userID.fName}} {{delete.day.userID.lName}}
+.modal-body
+	h3 Are you sure you want to delete day
+		br
+		strong {{delete.day.date | date: "dd/MM/yyyy"}}
+.modal-footer
+	button.btn.btn-primary(type='button', ng-click='delete.deleteDate(delete.day._id)') OK
+	button.btn.btn-warning(type='button', ng-click='delete.cancel()') Cancel
+
+	

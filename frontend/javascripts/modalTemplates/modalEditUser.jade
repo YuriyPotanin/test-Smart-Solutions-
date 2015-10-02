@@ -1,0 +1,27 @@
+.modal-header(type="text/ng-template")
+	h3.modal-title Edit 
+		strong {{users.user.fName}} {{users.user.lName}}
+.modal-body
+	form(role='form')
+		.form-group
+			label(for='firstName') First Name
+			input#firstName.form-control(type='text', ng-model ="users.user.fName")
+			label(for='firstName') Last Name
+			input#firstName.form-control(type='text', ng-model ="users.user.lName")
+			label(for='firstName') Phone Number
+			input#firstName.form-control.bfh-phone(type='text', ng-model ="users.user.tel" data-format="+38 (ddd) ddd-dddd")
+			label(for='sex') Sex
+			br
+			.btn-group#sex(role='group')
+				button.btn.btn-default(type='button' ng-model = 'users.user.sex' name = 'sex' btn-radio="'male'") male
+				button.btn.btn-default(type='button' ng-model = 'users.user.sex' name = 'sex' btn-radio="'female'") female
+			{{users.user.sex}}
+			br
+			label date Added
+			p.input-group
+				input.form-control(type='date', datepicker-popup='', ng-model='users.user.date', is-open='status.opened', min-date='minDate', max-date='maxDate', datepicker-options='dateOptions', date-disabled='disabled(date, mode)', ng-required='true', close-text='Close')
+.modal-footer
+	button.btn.btn-primary(type='button', ng-click='users.saveUpdateUser()') OK
+	button.btn.btn-warning(type='button', ng-click='users.cancel()') Cancel
+
+	

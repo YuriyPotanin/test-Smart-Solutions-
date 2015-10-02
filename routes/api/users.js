@@ -27,9 +27,19 @@ module.exports = function(app) {
             res.send(data);
         });
     });
+    app.get('/api/usersname/:username', function(req, res) {
+
+        usersRepository.findBytegName(req.params.username, function(err, data) {
+
+            res.err = err;
+            res.send(data);
+        });
+    });
 
     app.put('/api/users/:id', function(req, res) {
+        delete req.body._id;
         usersRepository.update(req.params.id, req.body, function(err, data) {
+            
             res.err = err;
             res.send(data);
         });

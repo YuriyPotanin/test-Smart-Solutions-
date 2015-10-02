@@ -1,0 +1,10 @@
+.modal-header(type="text/ng-template")
+	h3.modal-title Dlete
+		strong {{users.user.fName}} {{users.user.lName}}
+.modal-body
+	h3 Are you sure you want to delete {{users.user.fName}} {{users.user.lName}}
+.modal-footer
+	button.btn.btn-primary(type='button', ng-click='users.deleteUser(users.user._id)') OK
+	button.btn.btn-warning(type='button', ng-click='users.cancel()') Cancel
+
+	

@@ -8,7 +8,12 @@ var UserRepository = function(){
 
 UserRepository.prototype = new Repository();
 
-UserRepository.prototype.findByCriteria = function() {
+UserRepository.prototype.findBytegName = function(username, callback) {
+
+	var model = this.model;
+	var query = model.find('this.fName == username || this.lName == username');
+	query.exec(callback);
+
 
 };
 
