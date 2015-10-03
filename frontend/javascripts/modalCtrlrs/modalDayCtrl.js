@@ -26,38 +26,24 @@ function modalDayCtrl(resourceFactory, $modalInstance) {
 			return user;
 		});
 	};
-	vm.addToArrey = function(keyEvent, user) {
-		console.log(keyEvent.which);
-		console.log(user);
-		if (keyEvent.which === 13) {
-			
-			console.log(keyEvent.wich);
-			
-			vm.addedPeople.push(user);
-		}
+
+	vm.addToArray = function(user) {
+		vm.addedPeople.push(user);
 	};
+
+	vm.onSelect = function(item) {
+		vm.addToArray(item);
+		vm.customSelected = '';
+	};
+
 	////////////////////////////////time////////////////////
 
-	vm.stime = null;
-	vm.etime = null;
+	vm.stime = new Date();
+	vm.etime = new Date();
 	vm.hstep = 1;
 	vm.mstep = 1;
 
 	vm.ismeridian = false;
-
-	vm.update = function() {
-		var s = new Date();
-		s.setHours(8);
-		s.setMinutes(0);
-		vm.stime = s;
-
-		var e = new Daet();
-		e.setHours(8);
-		e.setMinutes(0);
-		vm.etime = e;
-
-	};
-
 
 	////////////////////////date///////////////////////////////
 	vm.date = new Date();
@@ -74,6 +60,25 @@ function modalDayCtrl(resourceFactory, $modalInstance) {
 		opened: false
 	};
 
+	vm.submit = function() {
+		var people = vm.addedPeople.map(function(user) {
+			return user._id;
+		});
+		var saveObject = {
+			date: vm.date,
+			tEnd: vm.etime,
+			tStart: vm.stime,
+			userIds: people
+		};
 
+		resourceFactory.saveNewWorkDay(saveObject, vm.addedPeople, function (data) {
+			console.log(data);
+		});
+		$modalInstance.close();
+
+	};
+	vm.cancel = function  () {
+		$modalInstance.close();
+	};
 
 }

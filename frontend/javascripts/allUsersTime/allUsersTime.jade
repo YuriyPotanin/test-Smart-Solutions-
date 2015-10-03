@@ -21,7 +21,7 @@ article.col-sm-6.col-sm-offset-3(ng-controller = 'allUsersTimeCtrl as date')
 							li(ng-repeat='choice in date.action')
 								a(href='' ng-click="date.open(day, choice, $parent.$index)") {{choice.title}}
 	.row
-		pagination(total-items="date.totalItems" ng-model="date.currentPage" ng-change="date.pageChanged(date.currentPage)" items-per-page ='date.itemsPerPage')
+		pagination(total-items="date.totalItems" ng-model="date.currentPage" ng-change="date.pageChanged(date.currentPage)")
 	
 	button.btn.btn-primary(type='button', ng-click='date.openNew("modalUserCntrl", "modalUser.html")') Create new User 
 	button.btn.btn-primary(type='button', ng-click='date.openNew("modalDayCtrl", "modalDay.html")') Create new workday 

@@ -13,17 +13,16 @@ function allUsersTimeCtrl(resourceFactory, $log, $modal, $rootScope) {
   vm.users = [];
   vm.editObject = {};
   vm.currentPage = 1;
-  vm.itemsPerPage = 2;
+  vm.itemsPerPage = 10;
   vm.totalItems = null;
 
   resourceFactory.getAllUsers(vm.currentPage, function(allUsers) {
     vm.allUsers = allUsers.days;
     vm.totalItems = allUsers.count;
   });
-  $rootScope.$on('udateArray', function(event, updArr) {
 
+  $rootScope.$on('udateArray', function(event, updArr) {
     vm.allUsers = updArr;
-    console.log(vm.allUsers);
   });
 
   ////////////////////////////////BUTTON////////////////////////////////

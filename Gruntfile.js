@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 				livereload: true
 			},
 			scripts: {
-				files: ['frontend/javascripts/*.js'],
+				files: ['frontend/javascripts/**/*.js'],
 				tasks: ['browserify']
 			},
 			server_js: {
@@ -33,11 +33,11 @@ module.exports = function(grunt) {
 				}
 			},
 			styles: {
-				files: ["frontend/styles/*.css"],
+				files: ['frontend/styles/**/*.styl'],
 				tasks: ['stylus']
 			},
 			jade_templates: {
-				files: ['frontend/javascripts/'],
+				files: ['frontend/javascripts/**/*.jade'],
 				tasks: ['jade:templates']
 			},
 		},

@@ -6,8 +6,21 @@ html(ng-app = "controlTimeModule")
 		link(rel='stylesheet', href='styles/css/style.css')
 		link(rel='stylesheet', href='styles/css/libs.css')
 	body
-		header
-		main(ng-controller = mainCtrl)
+		main(ng-controller = "mainCtrl as main")
+			p.navbar.navbar-right
+				.col-xs-4.col-xs-offset-6
+					.input-group
+						input.form-control(type='text',
+							ng-model='main.customSelected',
+							placeholder='find user',
+							typeahead='user as user.q for user in main.allUsers | filter:{q:$viewValue}',
+							typeahead-template-url='customTemplate.html',
+							typeahead-on-select='main.onSelect($item, $model, $label)')
+							
 			article(ng-view)
 		script(src='javascripts/libs.js')
 		script(src='javascripts/main.js')
+		script(type='text/ng-template', id='customTemplate.html').
+			<a>
+				<span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+			</a>

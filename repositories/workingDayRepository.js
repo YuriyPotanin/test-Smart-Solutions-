@@ -22,10 +22,9 @@ WorkingDayRepository.prototype.getAll = function(page, callback){
 	var result = {};
 
 	var query = model.find();
-	console.log(page);
 	query
-	.skip(2 * page)
-	.limit(2)
+	.skip(10 * --page)
+	.limit(10)
 	.populate('userID')
 	.exec(function(err, workingDays){
 		result.days = workingDays;
