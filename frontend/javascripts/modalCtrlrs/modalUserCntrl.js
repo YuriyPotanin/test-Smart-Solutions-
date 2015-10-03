@@ -18,7 +18,6 @@ function modalUserCntrl(resourceFactory, $modalInstance, items, $modal) {
 
 
 	delete vm.user.__v;
-	console.log(vm.user);
 	vm.user.date = new Date(vm.user.date);
 	vm.open = function($event) {
 		vm.status.opened = true;
@@ -38,8 +37,8 @@ function modalUserCntrl(resourceFactory, $modalInstance, items, $modal) {
 		resourceFactory.saveNewUser(vm.user);
 		$modalInstance.close();
 	};
+	
 	vm.cancel = function() {
-
 		$modalInstance.close();
 	};
 }

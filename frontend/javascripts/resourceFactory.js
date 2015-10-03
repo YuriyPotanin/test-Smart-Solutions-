@@ -16,7 +16,6 @@ function resourceFactory($resource, $rootScope) {
 	var currentPage = 1;
 	var totalPages = 1;
 
-	///////////////////////////User/////////////////////////////////
 	requstMethod.getAllUsers = function(page, callback) {
 		currentPage = page;
 		var allUsers = $resource('/api/workingDay?page=' + page);
@@ -99,8 +98,8 @@ function resourceFactory($resource, $rootScope) {
 		});
 	};
 	
-	/////////////////////////Time///////////////////////////////////
-	requstMethod.updateTtime = function(userId, sTime, eTime) {
+
+	requstMethod.updateTime = function(userId, sTime, eTime) {
 		var workingDay = $resource(workingDayBasePath + userId, null, {
 			'update': {
 				method: 'PUT'
@@ -115,13 +114,14 @@ function resourceFactory($resource, $rootScope) {
 		});
 
 	};
-	requstMethod.updateTtimeInArr = function(index, sTime, eTime) {
+
+	requstMethod.updateTimeInArr = function(index, sTime, eTime) {
 		allUsersArr[index].tStart = sTime;
 		allUsersArr[index].tEnd = eTime;
 
 		$rootScope.$emit('udateArray', allUsersArr);
-
 	};
+
 	requstMethod.deleteDate = function(id) {
 		var day = $resource(workingDayBasePath + id);
 		day.delete(id, function(resp) {

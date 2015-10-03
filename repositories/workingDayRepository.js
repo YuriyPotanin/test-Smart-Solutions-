@@ -12,8 +12,6 @@ WorkingDayRepository.prototype.findByIdUser = function(userID, callback) {
 	var model = this.model;
 	var query = model.find({userID:userID});
 	query.exec(callback);
-
-
 };
 
 WorkingDayRepository.prototype.getAll = function(page, callback){

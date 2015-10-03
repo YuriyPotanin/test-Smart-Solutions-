@@ -1,5 +1,4 @@
 var usersRepository = require('../../repositories/userRepository');
-// var notificationService = require('../../services/notification');
 
 module.exports = function(app) {
 

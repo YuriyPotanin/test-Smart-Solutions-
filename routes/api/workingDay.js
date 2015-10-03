@@ -26,7 +26,7 @@ module.exports = function(app) {
         });
     });
 
-    app.delete('/api/users/:dayId', function(req, res) {
+    app.delete('/api/workingDay/:dayId', function(req, res) {
         workingDayRepository.delete(req.params.dayId, function(err, data) {
             res.err = err;
             res.send(data);

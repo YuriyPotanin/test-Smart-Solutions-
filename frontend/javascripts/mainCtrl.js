@@ -18,16 +18,12 @@ function mainCtrl(resourceFactory) {
 			user.q = user.fName + " " + user.lName;
 			return user;
 		});
-
 	});
-
-
 
 	vm.onSelect = function(item) {
 		var locatin = '/#/api/users/' + item._id;
 		$location.path( locatin);
 		vm.customSelected = '';
 	};
-
 
 }

@@ -31,8 +31,8 @@ function modalTimeCtrl(resourceFactory, $modalInstance, items) {
 	};
 
 	vm.saveObjectTime = function(userId, sTime, eTime) {
-		resourceFactory.updateTtime(userId, sTime, eTime);
-		resourceFactory.updateTtimeInArr(items.index, sTime, eTime);
+		resourceFactory.updateTime(userId, sTime, eTime);
+		resourceFactory.updateTimeInArr(items.index, sTime, eTime);
 		$modalInstance.close();
 	};
 	vm.cancel = function () {

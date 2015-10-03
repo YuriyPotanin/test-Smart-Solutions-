@@ -10,12 +10,6 @@ function modalEditUserCtrl(resourceFactory, $modalInstance, items, $modal) {
 	var vm = this;
 	vm.user = items;
 	
-
-	console.log(vm.user._id);
-	
-
-
-	////////////////////////date///////////////////////////////
 	delete vm.user.__v;
 	console.log(vm.user);
 	vm.user.date = new Date(vm.user.date);
@@ -37,8 +31,7 @@ function modalEditUserCtrl(resourceFactory, $modalInstance, items, $modal) {
 		resourceFactory.updateUser(vm.user);
 		$modalInstance.close();
 	};
-	vm.cancel = function () {
-		
+	vm.cancel = function () {	
 		$modalInstance.close();
 	};
 }

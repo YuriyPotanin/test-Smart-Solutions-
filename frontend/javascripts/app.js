@@ -16,7 +16,4 @@ angular
 		otherwise({
 			redirectTo: '/'
 		});
-
-
-
-	});
+});

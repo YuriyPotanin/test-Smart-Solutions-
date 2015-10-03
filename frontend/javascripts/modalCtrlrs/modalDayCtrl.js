@@ -11,7 +11,6 @@ function modalDayCtrl(resourceFactory, $modalInstance) {
 	vm.allUsers = [];
 	vm.addedPeople = [];
 	vm.customSelected = null;
-	/////////////////////////////////Users/////////////////
 
 	resourceFactory.getUsers(function(users) {
 		vm.allUsers = users;
@@ -36,7 +35,6 @@ function modalDayCtrl(resourceFactory, $modalInstance) {
 		vm.customSelected = '';
 	};
 
-	////////////////////////////////time////////////////////
 
 	vm.stime = new Date();
 	vm.etime = new Date();
@@ -45,7 +43,6 @@ function modalDayCtrl(resourceFactory, $modalInstance) {
 
 	vm.ismeridian = false;
 
-	////////////////////////date///////////////////////////////
 	vm.date = new Date();
 	vm.open = function($event) {
 		vm.status.opened = true;

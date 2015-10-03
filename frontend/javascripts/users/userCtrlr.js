@@ -1,7 +1,7 @@
 
 angular
-  .module('controlTimeModule')
-  .controller('userCtrl', userCtrl);
+	.module('controlTimeModule')
+	.controller('userCtrl', userCtrl);
 
 userCtrl.$inject = ['resourceFactory', '$routeParams', '$modal'];
 
@@ -17,22 +17,20 @@ function userCtrl(resourceFactory, $routeParams, $modal ) {
 	});
 
 
-  vm.open = function(user, template, controller) {
-   
-    var modalInstance = $modal.open({
-      templateUrl: './templates/modalTemplates/' + template,
-      controller: controller,
-      controllerAs: 'users',
-      bindToController: true,
-      resolve: {
-        items: function() {
-          return user;
-        }
-      }
-
-
-    });
-    
-  };
+	vm.open = function(user, template, controller) {
+	 
+		var modalInstance = $modal.open({
+			templateUrl: './templates/modalTemplates/' + template,
+			controller: controller,
+			controllerAs: 'users',
+			bindToController: true,
+			resolve: {
+				items: function() {
+					return user;
+				}
+			}
+		});
+		
+	};
 
 }
