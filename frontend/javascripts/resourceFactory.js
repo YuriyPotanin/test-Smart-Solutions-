@@ -116,10 +116,12 @@ function resourceFactory($resource, $rootScope) {
 	};
 
 	requstMethod.updateTimeInArr = function(index, sTime, eTime) {
-		allUsersArr[index].tStart = sTime;
-		allUsersArr[index].tEnd = eTime;
+		if (allUsersArr[index]){
+			allUsersArr[index].tStart = sTime;
+			allUsersArr[index].tEnd = eTime;
 
-		$rootScope.$emit('udateArray', allUsersArr);
+			$rootScope.$emit('udateArray', allUsersArr);
+		}
 	};
 
 	requstMethod.deleteDate = function(id) {

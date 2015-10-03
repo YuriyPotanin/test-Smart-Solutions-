@@ -11,7 +11,7 @@ function modalEditUserCtrl(resourceFactory, $modalInstance, items, $modal) {
 	vm.user = items;
 	
 	delete vm.user.__v;
-	console.log(vm.user);
+	
 	vm.user.date = new Date(vm.user.date);
 	vm.open = function($event) {
 		vm.status.opened = true;

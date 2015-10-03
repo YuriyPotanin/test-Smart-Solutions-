@@ -21,8 +21,8 @@ function mainCtrl(resourceFactory) {
 	});
 
 	vm.onSelect = function(item) {
-		var locatin = '/#/api/users/' + item._id;
-		$location.path( locatin);
+		var location = '/#/api/users/' + item._id;
+		$location.path(location);
 		vm.customSelected = '';
 	};
 

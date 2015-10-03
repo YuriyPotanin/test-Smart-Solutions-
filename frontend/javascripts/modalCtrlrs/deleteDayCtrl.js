@@ -12,7 +12,6 @@ function deleteDayCtrl(resourceFactory, $modalInstance, items, $modal) {
 	console.log(vm.day);
 	
 	vm.deleteDate = function(id) {
-		console.log(id);
 		resourceFactory.deleteDate(id);
 		$modalInstance.close();
 		location.href = '/';
