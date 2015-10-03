@@ -23,7 +23,6 @@ function resourceFactory($resource, $rootScope) {
 			allUsersArr = result.days;
 			totalPages = Math.ceil(result.count / 10);
 			callback(result);
-
 		});
 	};
 
