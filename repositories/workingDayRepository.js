@@ -8,9 +8,9 @@ var WorkingDayRepository = function(){
 
 WorkingDayRepository.prototype = new Repository();
 
-WorkingDayRepository.prototype.findByIdUser = function(userID, callback) {
+WorkingDayRepository.prototype.deleteByIdUser = function(userID, callback) {
 	var model = this.model;
-	var query = model.find({userID:userID});
+	var query = model.remove({userID:userID});
 	query.exec(callback);
 };
 

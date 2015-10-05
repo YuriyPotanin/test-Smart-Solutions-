@@ -1,0 +1,19 @@
+article.col-sm-6.col-sm-offset-3
+	table.table
+		thead
+			tr
+				td Name
+				td Date
+				td role
+				td Sex
+				td Phone
+		tbody
+			tr(ng-repeat = 'user in users.allUsers')
+				td 
+					a(href = '#/api/users/{{user._id}}'){{user.fName}} {{user.lName}} 
+				td {{user.date |  date: "dd/MM/yyyy"}}
+				td {{user.role}}
+				td {{user.sex}}
+				td {{user.tel}}
+	button.btn.btn-primary(type='button', ng-click='users.openNew("modalUserCntrl", "modalUser.html")') Create new User 
+	a.btn.btn-primary.btn-sm.col-sm-offset-6(href='/#/', role='button') Main page

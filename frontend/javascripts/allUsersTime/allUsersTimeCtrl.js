@@ -20,11 +20,12 @@ function allUsersTimeCtrl(resourceFactory, $log, $modal, $rootScope) {
 		vm.allUsers = allUsers.days;
 		vm.totalItems = allUsers.count;
 	});
-
 	$rootScope.$on('udateArray', function(event, updArr) {
 		vm.allUsers = updArr;
 	});
-
+	$rootScope.$on('udatePage', function(event, totalPages) {
+		vm.totalPages = totalPages;
+	});
 	vm.action = [{
 		title: 'edit time',
 		templateUrl: 'modalTime.html',
@@ -76,7 +77,7 @@ function allUsersTimeCtrl(resourceFactory, $log, $modal, $rootScope) {
 		});
 
 	};
-	
+
 	vm.currentPage = 1;
 	vm.itemsPerPage = 2;
 	vm.totalItems = 20;

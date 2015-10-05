@@ -6,6 +6,7 @@ var userSchema = new Schema({
 	lName: String,
 	sex: String,
 	tel: String,
+	role: String,
 	date: {
 		type: Date,
 		default: Date.now

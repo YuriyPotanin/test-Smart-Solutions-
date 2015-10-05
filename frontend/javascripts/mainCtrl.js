@@ -6,7 +6,7 @@ angular
 
 mainCtrl.$inject = ['resourceFactory'];
 
-function mainCtrl(resourceFactory) {
+function mainCtrl(resourceFactory, $location) {
 	vm = this;
 	vm.customSelected = null;
 	vm.allUsers = [];
@@ -22,7 +22,7 @@ function mainCtrl(resourceFactory) {
 
 	vm.onSelect = function(item) {
 		var location = '/#/api/users/' + item._id;
-		$location.path(location);
+		window.location.href = location;
 		vm.customSelected = '';
 	};
 

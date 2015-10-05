@@ -39,14 +39,13 @@ function resourceFactory($resource, $rootScope) {
 			}
 		});
 		user.update(objUser, function(response) {
-			console.log(response);
 		});
 
 	};
 	requstMethod.saveNewUser = function(objUser) {
 		var user = $resource(userBasePath);
 		user.save(objUser, function(response) {
-			console.log(response);
+			usersArray.push(response);
 		});
 	};
 	requstMethod.getUsers = function(callback) {
@@ -61,23 +60,25 @@ function resourceFactory($resource, $rootScope) {
 	requstMethod.deleteUser = function(id) {
 		var user = $resource(userBasePath + id);
 		user.delete(id, function(resp) {
-			console.log(resp);
 		});
 	};
 
 	requstMethod.saveNewWorkDay = function(dataToBeSaved, users) {
 		var newWorkDay = $resource(workingDayBasePath, {}, {
-			'save': {method:'POST', isArray:true}
+			'save': {
+				method: 'POST',
+				isArray: true
+			}
 		});
-		
+
 		newWorkDay.save(dataToBeSaved, function(resp) {
-			if (currentPage === totalPages){
-				var data = resp.map(function(el){
-					var user = users.filter(function(userEl){
+			if (currentPage === totalPages || totalPages === 0) {
+				var data = resp.map(function(el) {
+					var user = users.filter(function(userEl) {
 						return userEl._id === el.userId;
 					});
 
-					if (user.length){
+					if (user.length) {
 						user = user[0];
 					}
 
@@ -92,11 +93,18 @@ function resourceFactory($resource, $rootScope) {
 				});
 
 				[].push.apply(allUsersArr, data);
+
+				totalPages = Math.ceil(totalPages + allUsersArr.length / 10 -1);
+				$rootScope.$emit('udatePage', totalPages);
+
+				while (allUsersArr.length > 10) {
+					allUsersArr.splice(-1, 1);
+				}
 				$rootScope.$emit('udateArray', allUsersArr);
 			}
 		});
 	};
-	
+
 
 	requstMethod.updateTime = function(userId, sTime, eTime) {
 		var workingDay = $resource(workingDayBasePath + userId, null, {
@@ -114,8 +122,10 @@ function resourceFactory($resource, $rootScope) {
 
 	};
 
+
+
 	requstMethod.updateTimeInArr = function(index, sTime, eTime) {
-		if (allUsersArr[index]){
+		if (allUsersArr[index]) {
 			allUsersArr[index].tStart = sTime;
 			allUsersArr[index].tEnd = eTime;
 

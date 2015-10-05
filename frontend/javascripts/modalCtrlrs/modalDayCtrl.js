@@ -15,7 +15,6 @@ function modalDayCtrl(resourceFactory, $modalInstance) {
 	resourceFactory.getUsers(function(users) {
 		vm.allUsers = users;
 		createArrayRorSearch(vm.allUsers);
-		console.log(vm.allUsers);
 	});
 
 	var createArrayRorSearch = function(arr) {
@@ -69,7 +68,6 @@ function modalDayCtrl(resourceFactory, $modalInstance) {
 		};
 
 		resourceFactory.saveNewWorkDay(saveObject, vm.addedPeople, function (data) {
-			console.log(data);
 		});
 		$modalInstance.close();
 

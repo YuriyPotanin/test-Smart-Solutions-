@@ -13,6 +13,10 @@ angular
 			templateUrl: './templates/users/user.html',
 			controller: 'userCtrl as user'
 		}).
+		when('/api/usersPage/', {
+			templateUrl: './templates/users/usersPage.html',
+			controller: 'usersPageCtrl as users'
+		}).
 		otherwise({
 			redirectTo: '/'
 		});

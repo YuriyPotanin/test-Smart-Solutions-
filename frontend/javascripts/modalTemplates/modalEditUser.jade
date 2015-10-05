@@ -6,16 +6,22 @@
 		.form-group
 			label(for='firstName') First Name
 			input#firstName.form-control(type='text', ng-model ="users.user.fName")
-			label(for='firstName') Last Name
-			input#firstName.form-control(type='text', ng-model ="users.user.lName")
-			label(for='firstName') Phone Number
-			input#firstName.form-control.bfh-phone(type='text', ng-model ="users.user.tel" data-format="+38 (ddd) ddd-dddd")
+			label(for='lastName') Last Name
+			input#lastName.form-control(type='text', ng-model ="users.user.lName")
+			label(for='phoneNumber') Phone Number
+			input#phoneNumber.form-control.bfh-phone(type='text', ng-model ="users.user.tel" data-format="+38 (ddd) ddd-dddd")
+			label(for='role') Role
+			br
+			.btn-group#role(role='group')
+				button.btn.btn-default(type='button' ng-model = 'users.user.role' name = 'role' btn-radio="'Big boss'") Big boss
+				button.btn.btn-default(type='button' ng-model = 'users.user.role' name = 'role' btn-radio="'boss'") Boss
+				button.btn.btn-default(type='button' ng-model = 'users.user.role' name = 'role' btn-radio="'subordinate'") Subordinate
+			br
 			label(for='sex') Sex
 			br
 			.btn-group#sex(role='group')
 				button.btn.btn-default(type='button' ng-model = 'users.user.sex' name = 'sex' btn-radio="'male'") male
 				button.btn.btn-default(type='button' ng-model = 'users.user.sex' name = 'sex' btn-radio="'female'") female
-			{{users.user.sex}}
 			br
 			label date Added
 			p.input-group

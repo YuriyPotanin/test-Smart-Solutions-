@@ -14,6 +14,7 @@ function modalUserCntrl(resourceFactory, $modalInstance, items, $modal) {
 	vm.user.lName = null;
 	vm.user.sex = null;
 	vm.user.tel = null;
+	vm.user.role = null;
 
 
 
